@@ -67,7 +67,8 @@ https://github.com/davidesantangelo/dato.rss/wiki
 - [Dandelion](https://dandelion.eu) &mdash; Semantic Text Analytics as a service.
 - [Sidekiq](http://sidekiq.org) &mdash; Simple, efficient background processing for Ruby.
 - [JSON:API Serialization](https://github.com/jsonapi-serializer/jsonapi-serializer) &mdash; A fast JSON:API serializer for Ruby Objects..
-- [PgSearch](https://github.com/Casecommons/pg_search) &mdash; PgSearch builds named scopes that take advantage of PostgreSQL's full text search..
+- [PgSearch](https://github.com/Casecommons/pg_search) &mdash; PgSearch builds named scopes that take advantage of PostgreSQL's full text search.
+- [TailwindCSS](https://github.com/tailwindlabs/tailwindcss) &mdash; A utility-first CSS framework for rapidly building custom user interfaces.
 
 Plus *lots* of Ruby Gems, a complete list of which is at [/main/Gemfile](https://github.com/davidesantangelo/dato.rss/blob/main/Gemfile).
 
