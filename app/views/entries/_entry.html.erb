@@ -6,7 +6,7 @@
       class="text-gray-600 text-sm"><%= "#{time_ago_in_words(entry.published_at, include_seconds: true)} ago" %></span><br>
   </p>
   <div class="mb-1">
-    <span class="font-light text-green-600"><%= entry.url.truncate(200, omission: '... (continue)') %></span>
+    <span class="font-light overflow-ellipsis overflow-hidden text-green-600"><%= entry.url.truncate(200, omission: '... (continue)') %></span>
   </div>
   <span
     class="text-justify"><%= sanitize(highlight(entry.body.truncate(700, omission: '... (continue)'), params[:q]), tags: %w(strong em a mark), attributes: %w(href)) %></span>

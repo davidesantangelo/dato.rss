@@ -1,5 +1,5 @@
 
-<div class="mt-5 mb-5">result <strong><%=number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %></strong> entries from <strong><%= @pagy.count %></strong> feeds divided into <strong><%= @pagy.pages %></strong> pages</div>
+<div class="mt-5 mb-5">result <strong><%=number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %></strong> entries from <strong><%= @pagy.count %></strong> feeds</div>
 
 <div class="bg-white  p-3">
   <% @feeds.each do |feed| %>
