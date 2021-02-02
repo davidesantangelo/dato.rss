@@ -8,7 +8,7 @@ DATO.RSS - API: Turns feed data into an awesome API. The API simplifies how you 
 
 ## Live
 
-www.datorss.com
+https://datorss.com
 
 ## Example
 
