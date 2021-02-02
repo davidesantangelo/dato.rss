@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140621816-1"></script>
+    <title>dato.rss</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Davide Santangelo">
+    <meta name="description" content="dato.rss - RSS Search Engine - A search engine that allows you to find RSS feeds easily">
+    <meta name="keywords" content="rails api elasticsearch web RSS">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="dato.rss - RSS Search Engine with RESTful API">
+    <meta property="og:title" content="dato.rss - RSS Search Engine with RESTful API">
+    <meta property="og:description"
+      content="dato.rss - RSS Search Engine - A search engine that allows you to find RSS feeds easily">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_pack_tag 'favicon.png' %>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+      window.addEventListener("load", function () {
+        window.cookieconsent.initialise({
+          "palette": {
+            "popup": {
+              "background": "#252e39"
+            },
+            "button": {
+              "background": "#14a7d0"
+            }
+          },
+          "content": {
+            "message": "We use cookies to help our site work and to understand how it is used. By continuing to browse the site you're agreeing to our use of cookies."
+          }
+        })
+      });
+    </script>
+
+  </head>
+
+  <body class="font-arial min-h-screen h-full">
+    <%= yield %>
+  </body>
+</html>

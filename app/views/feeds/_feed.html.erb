@@ -1,0 +1,16 @@
+<div class="mb-5">
+  <p class=""><span
+      class="bg-gray-400 text-white inline-flex items-center justify-center px-2 py-1 mr-2 text-xs leading-none rounded"><%= feed.rank.round %></span><a
+      target="_BLANK" class="no-underline hover:underline text-blue-700"
+      href="<%= feed.url %>"><%= feed.title %></a> 
+      <% if feed.language.present? %>
+        - <span class="text-gray-600 text-sm"> language <%= feed.language&.upcase %> </span>
+      <% end %> - <span
+      class="text-gray-600 text-sm"> created <%= "#{time_ago_in_words(feed.created_at, include_seconds: true)} ago" %></span> - <span
+      class="text-gray-600 text-sm"> <%= feed.entries_count %> entries</span></br>
+  </p>
+  <div class="mb-1">
+    <span class="font-light overflow-ellipsis overflow-hidden text-green-600"><%= feed.url %></span>
+  </div>
+  <span class=""><%= feed.description %></span>
+</div>

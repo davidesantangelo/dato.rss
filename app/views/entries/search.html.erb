@@ -1,0 +1,17 @@
+
+<div class="mt-5 mb-5">result <strong><%= @pagy.count %></strong> entries from <strong><%= @total_entries.pluck(:feed_id).uniq.size%></strong> feeds divided into <strong><%= @pagy.pages %></strong> pages</div>
+
+<div class="h-full bg-white p-3">
+  <% if @entries.present? %>
+    <% @entries.each do |entry| %>
+      <%= render 'entry', entry: entry %>
+    <% end %>
+  
+    <% if @pagy.pages > 1 %>
+      <%== pagy_nav(@pagy).html_safe %>
+    <% end %>
+  <% else %>
+    <p>Your search for - <strong><%= params[:q].presence || 'blank query' %></strong> - did not match any entries</p>
+  <% end %>
+</div>
+

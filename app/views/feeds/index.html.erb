@@ -1,0 +1,13 @@
+
+<div class="mt-5 mb-5">result <strong><%=number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %></strong> entries from <strong><%= @pagy.count %></strong> feeds divided into <strong><%= @pagy.pages %></strong> pages</div>
+
+<div class="bg-white  p-3">
+  <% @feeds.each do |feed| %>
+    <%= render 'feed', feed: feed %>
+  <% end %>
+
+  <% if @pagy.pages > 1 %>
+    <%== pagy_nav(@pagy).html_safe %>
+  <% end %>
+</div>
+
