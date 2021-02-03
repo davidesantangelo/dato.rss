@@ -4,6 +4,12 @@ class EntriesController < ApplicationController
   end
 
   def search
-    @pagy, @entries = pagy Entry.search_full_text(params[:q]).includes(:feed)
+    @pagy, @entries = pagy total_entries
+  end
+
+  private
+
+  def total_entries
+    @total_entries ||= Entry.search_full_text(params[:q]).includes(:feed)
   end
 end
