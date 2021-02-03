@@ -6,7 +6,8 @@ class Entry < ApplicationRecord
   # FTS
   pg_search_scope :search_full_text, against: {
     title: 'A',
-    body: 'B'
+    body: 'B',
+    url: 'C'
   }, using: {
     tsearch: {
       prefix: true,

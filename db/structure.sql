@@ -71,7 +71,7 @@ CREATE TABLE public.entries (
     enriched_at timestamp without time zone,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    searchable tsvector GENERATED ALWAYS AS ((setweight(to_tsvector('simple'::regconfig, (COALESCE(title, ''::character varying))::text), 'A'::"char") || setweight(to_tsvector('simple'::regconfig, COALESCE(body, ''::text)), 'B'::"char"))) STORED
+    searchable tsvector GENERATED ALWAYS AS (((setweight(to_tsvector('simple'::regconfig, (COALESCE(title, ''::character varying))::text), 'A'::"char") || setweight(to_tsvector('simple'::regconfig, COALESCE(body, ''::text)), 'B'::"char")) || setweight(to_tsvector('simple'::regconfig, (COALESCE(url, ''::character varying))::text), 'C'::"char"))) STORED
 );
 
 
@@ -393,6 +393,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190326135943'),
 ('20190429122649'),
 ('20210129080659'),
-('20210129085830');
+('20210129085830'),
+('20210203105050');
 
 
