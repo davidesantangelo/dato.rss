@@ -60,6 +60,10 @@ class Entry < ApplicationRecord
     [false, nil]
   end
 
+  def self.search(query)
+    search_full_text(query).includes(:feed).order(created_at: :desc)
+  end
+
   # instance methods
   def as_indexed_json(_options = {})
     as_json(except: ['annotations'])

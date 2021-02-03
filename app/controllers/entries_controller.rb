@@ -10,6 +10,6 @@ class EntriesController < ApplicationController
   private
 
   def total_entries
-    @total_entries ||= Entry.search_full_text(params[:q]).includes(:feed)
+    @total_entries ||= Entry.search(params[:q])
   end
 end
