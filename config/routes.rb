@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :feeds, only: [:index]
 
-  resources :entries, only: '' do
+  resources :entries, only: [:index] do
     collection do
       get :search
     end
