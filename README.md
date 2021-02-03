@@ -52,6 +52,29 @@ curl 'https://datorss.com/api/searches?q=news' | json_pp
 }
 
 ```
+## Search
+
+Search is just implemented with Full Text Search Postgres feature.
+
+I used the pg_search Gem, which can be used in two ways:
+
+### Multi Search: 
+
+Search across multiple models and return a single array of results. Imagine having three models: Product, Brand, and Review. Using Multi Search we could search across all of them at the same time, seeing a single set of search results. This would be perfect for adding federated search functionality to your app.
+
+### Search Scope: 
+
+Search within a single model, but with greater flexibility.
+
+## Feed Rank
+
+Feed Ranking is provided by [openrank](https://openrank.io) a free root domain authority metric based on the common search pagerank dataset. The value is normilized by 
+
+```ruby
+((Math.log10(domain_rank) / Math.log10(100)) * 100).round
+```
+
+
 ## Wiki
 
 All documentation is in the Wiki section. Feel free to make it better, of course.
@@ -71,7 +94,7 @@ https://github.com/davidesantangelo/dato.rss/wiki
 
 Plus *lots* of Ruby Gems, a complete list of which is at [/main/Gemfile](https://github.com/davidesantangelo/dato.rss/blob/main/Gemfile).
 
-## Buy me a coffee
+## Sponsor me
 
 If you want to support me in server costs to keep dato.ess free and up, consider sponsorize! Thanks!
 
