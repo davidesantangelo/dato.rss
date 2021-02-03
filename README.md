@@ -62,7 +62,8 @@ I used the *pg_search Gem*, which can be used in two ways:
 
 **Search Scope:** Search within a single model, but with greater flexibility.
 
-``` execute <<-SQL
+```sql
+    execute <<-SQL
       ALTER TABLE entries
       ADD COLUMN searchable tsvector GENERATED ALWAYS AS (
         setweight(to_tsvector('simple', coalesce(title, '')), 'A') ||
