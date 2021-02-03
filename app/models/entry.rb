@@ -61,7 +61,7 @@ class Entry < ApplicationRecord
   end
 
   def self.search(query)
-    search_full_text(query).includes(:feed).order(created_at: :desc)
+    search_full_text(query).includes(:feed)
   end
 
   # instance methods
