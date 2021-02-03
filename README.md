@@ -1,6 +1,7 @@
 # DATO.RSS
 *The best RSS Search Engine experience you can find.*
 
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/y6a1mm3xrdr6wnm1jogk.png)
 
 DATO.RSS - Search Engine: Quickly search through the millions of available RSS feeds.
 
