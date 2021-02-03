@@ -1,6 +1,7 @@
 # DATO.RSS
 *The best RSS Search Engine experience you can find.*
 
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/y6a1mm3xrdr6wnm1jogk.png)
 
 DATO.RSS - Search Engine: Quickly search through the millions of available RSS feeds.
 
@@ -58,13 +59,21 @@ Search is just implemented with Full Text Search Postgres feature.
 
 I used the *pg_search Gem*, which can be used in two ways:
 
-#### Multi Search: 
+**Multi Search:** Search across multiple models and return a single array of results. Imagine having three models: Product, Brand, and Review. Using Multi Search we could search across all of them at the same time, seeing a single set of search results. This would be perfect for adding federated search functionality to your app.
 
-Search across multiple models and return a single array of results. Imagine having three models: Product, Brand, and Review. Using Multi Search we could search across all of them at the same time, seeing a single set of search results. This would be perfect for adding federated search functionality to your app.
+**Search Scope:** Search within a single model, but with greater flexibility.
 
-#### Search Scope: 
+```sql
+    execute <<-SQL
+      ALTER TABLE entries
+      ADD COLUMN searchable tsvector GENERATED ALWAYS AS (
+        setweight(to_tsvector('simple', coalesce(title, '')), 'A') ||
+        setweight(to_tsvector('simple', coalesce(body,'')), 'B') ||
+        setweight(to_tsvector('simple', coalesce(url,'')), 'C')
+      ) STORED;
+    SQL
+```
 
-Search within a single model, but with greater flexibility.
 
 ## Feed Rank
 
