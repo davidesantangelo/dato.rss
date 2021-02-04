@@ -32,8 +32,8 @@
     <%= favicon_pack_tag 'favicon.png' %>
   </head>
 
-  <body class=" font-arial min-h-screen h-full bg-gray-100">
-    <div class="px-8 py-2">
+  <body class="font-arial min-h-screen h-full bg-gray-100">
+    <div class="px-12 pb-6">
       <div class="my-4">
         <% if params[:controller] == 'feeds' %>
           <%= link_to 'dato.rss', root_path, class: 'inline-block align-middle py-2 text-xl underline text-green-600', title: 'back to homepage'%>

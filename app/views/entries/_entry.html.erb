@@ -13,7 +13,7 @@
     class="text-justify"><%= sanitize(highlight(entry.body.truncate(700, omission: '... (continue)'), params[:q]), tags: %w(strong em a mark), attributes: %w(href)) %></span>
   <div class="my-1">
     <% entry.categories.take(6).each do |category| %>
-      <span class="font-light bg-gray-100 p-1 text-sm text-gray-600"><%= category %></span>
+      <span class="bg-gray-100 text-gray-600 inline-flex items-center justify-center px-2 py-1 text-xs leading-none rounded-sd"><%= category %></span>
     <% end %>
   </div>
 </div>
