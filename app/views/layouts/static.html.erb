@@ -61,7 +61,7 @@
   </body>
 
   <footer class="absolute top-10 right-10">
-    <a title="search entries" href="/feeds" class="rounded bg-blue-400 text-white p-3 text-xl hover:underline"><%= Feed.all.size %> feeds</a>
-    <a title="search entries" href="/feeds" class="rounded bg-green-400 text-white p-3 text-xl hover:underline"><%= Feed.sum(:entries_count) %> entries</a>
+    <a title="search entries" href="/feeds" class="rounded bg-blue-400 text-white p-3 text-xl hover:underline"><%= number_to_human(Feed.all.size) %> feeds</a>
+    <a title="search entries" href="/feeds" class="rounded bg-green-400 text-white p-3 text-xl hover:underline"><%= number_to_human(Feed.sum(:entries_count)) %> entries</a>
   </footer>
 </html>
