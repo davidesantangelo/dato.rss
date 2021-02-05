@@ -36,11 +36,11 @@
     <div class="px-12 pb-6">
       <div class="my-4">
         <% if params[:controller] == 'feeds' %>
-          <%= link_to 'dato.rss', root_path, class: 'inline-block align-middle py-2 text-xl underline text-green-600', title: 'back to homepage'%>
+          <%= link_to 'dato.rss', root_path, class: 'inline-block align-middle py-2 text-xl underline text-green-600', title: 'back to homepage'%>  <span class="inline-block align-middle py-2 text-xl text-blue-600"> -> feeds </span>
         <% end %>
 
         <% if params[:controller] == 'entries' %>
-          <%= link_to 'feed.rss', feeds_path, class: 'inline-block align-middle py-2 text-xl underline text-blue-600', title: 'back to feeds' %>
+          <%= link_to 'feed.rss', feeds_path, class: 'inline-block align-middle py-2 text-xl underline text-blue-600', title: 'back to feeds' %> <span class="inline-block align-middle py-2 text-xl text-green-600"> -> entries </span>
         <% end %>
       </div>
         <%= form_tag search_entries_path, method: :get do %>

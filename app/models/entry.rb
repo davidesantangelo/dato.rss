@@ -29,7 +29,7 @@ class Entry < ApplicationRecord
   default_scope { order(created_at: :desc) }
 
   scope :enriched, -> { where.not(enriched_at: nil) }
-  scope :newest, -> { where('created_at <= ?', 24.hours.ago) }
+  scope :latest, -> { where('created_at >= ?', 24.hours.ago) }
 
   # relations
   belongs_to :feed, counter_cache: true

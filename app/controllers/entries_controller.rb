@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   def index
-    @pagy, @entries = pagy Entry.all
+    @pagy, @entries = pagy Entry.latest
   end
 
   def search

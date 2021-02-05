@@ -10,7 +10,7 @@ class Feed < ApplicationRecord
 
   # scopes
   default_scope { order(entries_count: :desc) }
-  scope :newest, -> { enabled.where('created_at <= ?', 24.hours.ago) }
+  scope :latest, -> { enabled.where('created_at >= ?', 24.hours.ago) }
 
   # relations
   has_many :entries, dependent: :destroy
@@ -45,7 +45,7 @@ class Feed < ApplicationRecord
   end
 
   def self.recent(limit: 50)
-    unscoped.newest.limit(limit)
+    unscoped.latest.limit(limit)
   end
 
   def self.popular(limit: 20)
