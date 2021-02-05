@@ -1,13 +1,13 @@
-<div class="mb-5">
+<div class="mb-5 overflow-ellipsis overflow-hidden">
   <p class=""><span title="feed rank"
       class="bg-yellow-400 text-white inline-flex items-center justify-center px-2 py-1 mr-0 text-xs leading-none rounded-sd"><%= entry.feed.rank.round %></span> <a
       href="<%= entry.feed.url %>" target="_blank" class="bg-blue-400 text-white inline-flex items-center justify-center px-2 py-1 mr-2 text-xs leading-none rounded-sd hover:underline">feed</a><a
-      target="_BLANK" class="no-underline overflow-ellipsis overflow-hidden hover:underline text-blue-700"
+      target="_BLANK" class="no-underline hover:underline text-blue-700"
       href="<%= entry.url %>"><%= highlight(entry.title, params[:q]) %></a> - <span
       class="text-gray-600 text-sm"><%= "#{time_ago_in_words(entry.published_at, include_seconds: true)} ago" %></span><br>
   </p>
   <div class="mb-1">
-    <span class="font-light overflow-ellipsis overflow-hidden text-green-600"><%= entry.url.truncate(200, omission: '... (continue)') %></span>
+    <span class="font-light text-green-600"><%= entry.url %></span>
   </div>
   <span
     class="text-justify"><%= sanitize(highlight(entry.body.truncate(700, omission: '... (continue)'), params[:q]), tags: %w(strong em a mark), attributes: %w(href)) %></span>
