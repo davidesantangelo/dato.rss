@@ -1,8 +1,9 @@
 
-<% if @entries.present? %>
-  <div class="mt-5 mb-5">result <strong><%= @pagy.count %></strong> entries from <strong><%= (@total_entries || @entries).pluck(:feed_id).uniq.size%></strong> feeds divided into <strong><%= @pagy.pages %></strong> pages</div>
+<% if entries.present? %>
+  <div class="mt-5 mb-5"><%= latest ? 'in the last 24 hours' : '' %> result <strong><%= @pagy.count %></strong> entries from <strong><%= (@total_entries || entries).pluck(:feed_id).uniq.size%></strong> feeds divided into <strong><%= @pagy.pages %></strong> pages</div>
+  
   <div class="h-full bg-white p-3"> 
-    <% @entries.each do |entry| %>
+    <% entries.each do |entry| %>
       <%= render 'entry', entry: entry %>
     <% end %>
   
