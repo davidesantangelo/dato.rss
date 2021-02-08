@@ -1,6 +1,11 @@
 class EntriesController < ApplicationController
   def index
     @pagy, @entries = pagy Entry.latest
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @entries.limit(10_000).to_csv, filename: "latest-entries-#{Date.today}.csv" }
+    end
   end
 
   def search
