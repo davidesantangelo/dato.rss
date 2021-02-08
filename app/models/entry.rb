@@ -61,7 +61,7 @@ class Entry < ApplicationRecord
   end
 
   def self.to_csv
-    attributes = %w[feed_url url title body categories published_at]
+    attributes = %w[feed_url url title text categories published_at]
 
     CSV.generate(headers: true) do |csv|
       csv << attributes

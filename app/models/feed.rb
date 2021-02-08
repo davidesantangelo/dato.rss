@@ -41,7 +41,7 @@ class Feed < ApplicationRecord
   end
 
   def self.to_csv
-    attributes = %w[url title description entries_count]
+    attributes = %w[url title description entries_count rank]
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
