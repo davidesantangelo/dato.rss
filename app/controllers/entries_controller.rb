@@ -8,7 +8,7 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data total_entries.to_csv, filename: "entries-#{Date.today}.csv" }
+      format.csv { send_data total_entries.limit(10_000).to_csv, filename: "entries-#{Date.today}.csv" }
     end
   end
 
