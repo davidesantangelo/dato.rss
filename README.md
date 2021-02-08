@@ -3,9 +3,9 @@
 
 ![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/y6a1mm3xrdr6wnm1jogk.png)
 
-DATO.RSS - Search Engine: Quickly search through the millions of available RSS feeds.
+**Search Engine:** Quickly search through the millions of available RSS feeds.
 
-DATO.RSS - API: Turns feed data into an awesome API. The API simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep track of your favourite feed data with a simple, fast and clean REST API. All entries are enriched by Machine Learning and Semantic engines.
+**RESTful API:** Turns feed data into an awesome API. The API simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep track of your favourite feed data with a simple, fast and clean REST API. All entries are enriched by Machine Learning and Semantic engines.
 
 ## Live
 
