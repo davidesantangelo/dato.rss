@@ -3,6 +3,11 @@ class FeedsController < ApplicationController
 
   def index
     @pagy, @feeds = pagy Feed.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @feeds.to_csv, filename: "feeds-#{Date.today}.csv" }
+    end
   end
 
   private

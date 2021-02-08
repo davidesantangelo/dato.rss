@@ -1,6 +1,17 @@
 
 <% if entries.present? %>
-  <div class="mt-5 mb-5"><%= latest ? 'in the last 24 hours' : '' %> result <strong><%= @pagy.count %></strong> entries from <strong><%= (@total_entries || entries).pluck(:feed_id).uniq.size%></strong> feeds divided into <strong><%= @pagy.pages %></strong> pages</div>
+  <div class="mt-5 mb-5">
+    <%= latest ? 'in the last 24 hours' : '' %> result <strong><%= @pagy.count %></strong> entries from <strong><%= (@total_entries || entries).pluck(:feed_id).uniq.size%></strong> feeds divided into <strong><%= @pagy.pages %></strong> pages
+    <div class="float-right">
+      <div class="rounded w-5 bg-blue-400 hover:underline p-1 text-white">
+        <%= link_to search_entries_path(format: 'csv', q: params[:q]), title: 'export entries as csv' do %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+        <% end %>
+      </div>
+    </div>
+  </div>
   
   <div class="h-full bg-white p-3"> 
     <% entries.each do |entry| %>

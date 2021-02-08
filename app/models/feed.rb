@@ -40,6 +40,18 @@ class Feed < ApplicationRecord
     raise e
   end
 
+  def self.to_csv
+    attributes = %w[url title description entries_count]
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |feed|
+        csv << attributes.map { |attr| feed.send(attr) }
+      end
+    end
+  end
+
   def self.avg_rank
     all.average(:rank).to_f.round(2)
   end

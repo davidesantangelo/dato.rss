@@ -65,7 +65,6 @@
   </body>
 
   <footer class="absolute top-10 right-10">
-    <a title="show feeds" href="/feeds" class="rounded bg-blue-400 text-white p-3 text hover:underline"><%= number_to_human(Feed.all.size) %> feeds</a>
-    <a title="show latest entries" href="/entries" class="rounded bg-green-400 text-white p-3 text hover:underline"><%= number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %> entries</a>
+    <a title="show latest entries" href="/entries" class="underline  w-full sm:w-auto  text-gray-500 leading-4  focus:outline-none focus:text-gray-600 transition ease-in-out duration-150 xl:text-lg xl:py-2"><%= number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %> entries</a>
   </footer>
 </html>

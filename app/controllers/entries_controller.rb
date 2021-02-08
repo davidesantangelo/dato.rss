@@ -5,6 +5,11 @@ class EntriesController < ApplicationController
 
   def search
     @pagy, @entries = pagy total_entries
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data total_entries.to_csv, filename: "entries-#{Date.today}.csv" }
+    end
   end
 
   private

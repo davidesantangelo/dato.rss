@@ -1,7 +1,18 @@
 
-<div class="mt-5 mb-5">result <strong><%=number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %></strong> entries from <strong><%= @pagy.count %></strong> feeds</div>
+<div class="mt-5 mb-5">
+  result <strong><%=number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %></strong> entries from <strong><%= @pagy.count %></strong> feeds
+  <div class="float-right">
+    <div class="rounded w-5 bg-blue-400 hover:underline p-1 text-white">
+      <%= link_to feeds_path(format: 'csv'), title: 'export feeds as csv' do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<div class="bg-white  p-3">
+<div class="bg-white p-3">
   <% @feeds.each do |feed| %>
     <%= render 'feed', feed: feed %>
   <% end %>

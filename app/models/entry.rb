@@ -60,6 +60,18 @@ class Entry < ApplicationRecord
     [false, nil]
   end
 
+  def self.to_csv
+    attributes = %w[feed_url url title body categories published_at]
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |entry|
+        csv << attributes.map { |attr| entry.send(attr) }
+      end
+    end
+  end
+
   def self.search(query)
     search_full_text(query).includes(:feed)
   end
@@ -67,6 +79,10 @@ class Entry < ApplicationRecord
   # instance methods
   def as_indexed_json(_options = {})
     as_json(except: ['annotations'])
+  end
+
+  def feed_url
+    feed.url
   end
 
   def body
