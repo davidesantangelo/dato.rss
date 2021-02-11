@@ -2,14 +2,14 @@
   <span title="feed rank" class="bg-yellow-400 text-white inline-flex items-center justify-center px-2 py-1 mr-0 text-xs leading-none rounded-sd"><%= entry.feed.rank.round %></span> 
   <a href="<%= entry.feed.url %>" title="<%= entry.feed.title %>" target="_blank" class="bg-blue-400 text-white inline-flex items-center justify-center px-2 py-1 mr-2 text-xs leading-none rounded-sd hover:underline">feed</a>
       
-  <a target="_BLANK" class="no-underline hover:underline text-blue-700" href="<%= entry.url %>"><%= highlight(entry.title, params[:q]) %></a> - 
+  <a target="_BLANK" class="no-underline hover:underline text-blue-700" href="<%= entry.url %>"><%= highlight(entry.title, params[:q]) %></a> <span class="text-gray-400">-</span> 
   
   <span class="text-gray-600 text-sm"><%= "#{time_ago_in_words(entry.published_at, include_seconds: true)} ago" %></span>
   <% case entry&.sentiment&.dig('type')%>
     <% when 'negative' %>
-      <span class="bg-red-200 text-gray-500 inline-flex items-center justify-center px-2 py-1 ml-2 text-xs leading-none rounded-md">negative</span>
+      <span class="bg-red-200 text-red-400 inline-flex items-center justify-center px-2 py-1 ml-2 text-xs leading-none rounded-md">negative</span>
     <% when 'positive' %>
-      <span class="bg-green-200 text-gray-500 inline-flex items-center justify-center px-2 py-1 ml-2 text-xs leading-none rounded-md">positive</span>
+      <span class="bg-green-200 text-green-600 inline-flex items-center justify-center px-2 py-1 ml-2 text-xs leading-none rounded-md">positive</span>
     <% else %>
       <span class="bg-gray-200 text-gray-500 inline-flex items-center justify-center px-2 py-1 ml-2 text-xs leading-none rounded-md">neutral</span>
   <% end %>
