@@ -35,7 +35,7 @@ class Entry < ApplicationRecord
   belongs_to :feed, counter_cache: true
 
   # validations
-  validates :url, presence: true
+  validates :url, presence: true, uniqueness: true
   validates :title, presence: true
   validates_uniqueness_of :url
 
@@ -56,7 +56,7 @@ class Entry < ApplicationRecord
     entry = create!(attrs)
 
     [true, entry]
-  rescue ActiveRecord::RecordNotUnique
+  rescue ActiveRecord::RecordNotUnique, ActiveRecord::RecordInvalid
     [false, nil]
   end
 

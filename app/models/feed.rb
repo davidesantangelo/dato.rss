@@ -21,7 +21,7 @@ class Feed < ApplicationRecord
   enum status: %i[enabled disabled]
 
   # validations
-  validates :url, presence: true
+  validates :url, presence: true, uniqueness: true
   validates :title, presence: true
   validates_associated :entries
 
