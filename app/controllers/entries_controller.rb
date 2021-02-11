@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
   def index
     @pagy, @entries = pagy Entry.latest
+    @timing = Benchmark.measure { Entry.latest }
 
     respond_to do |format|
       format.html
@@ -20,6 +21,7 @@ class EntriesController < ApplicationController
   private
 
   def total_entries
+    @timing = Benchmark.measure { Entry.search(params[:q]) }
     @total_entries ||= Entry.search(params[:q])
   end
 end

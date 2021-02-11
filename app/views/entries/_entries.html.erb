@@ -1,7 +1,7 @@
 
 <% if entries.present? %>
   <div class="mt-5 mb-5">
-    <%= latest ? 'in the last 24 hours' : '' %> result <strong><%= @pagy.count %></strong> entries from <strong><%= (@total_entries || entries).pluck(:feed_id).uniq.size%></strong> feeds divided into <strong><%= @pagy.pages %></strong> pages
+    <%= latest ? 'in the last 24 hours' : '' %> result <strong><%= @pagy.count %></strong> entries from <strong><%= (@total_entries || entries).pluck(:feed_id).uniq.size%></strong> feeds <span class="text-gray-500">(<%=  @timing.real.round(4) %> sec)</span>
     <div class="float-right">
       <div class="rounded w-5 bg-blue-400 hover:underline p-1 text-white">
         <% if latest %>
