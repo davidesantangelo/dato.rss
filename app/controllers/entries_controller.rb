@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_action :set_timing, only: [:search]
+  before_action :set_timing
 
   def index
     @pagy, @entries = pagy Entry.latest
