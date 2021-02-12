@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 
-  resources :feeds, only: [:index]
+  resources :feeds, only: [:index] do
+    member do
+      get :entries
+    end
+  end
 
   resources :entries, only: [:index] do
     collection do

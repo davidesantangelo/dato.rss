@@ -1,5 +1,5 @@
 class FeedsController < ApplicationController
-  before_action :reset_params_q
+  before_action :set_feed, only: [:entries]
 
   def index
     @pagy, @feeds = pagy Feed.all
@@ -10,9 +10,20 @@ class FeedsController < ApplicationController
     end
   end
 
+  def entries
+    respond_to do |format|
+      format.html do
+        @pagy, @entries = pagy @feed.entries
+      end
+      format.csv do
+        send_data @feed.entries.limit(10_000).to_csv, filename: "feed-#{@feed.title}-entries-#{Date.today}.csv"
+      end
+    end
+  end
+
   private
 
-  def reset_params_q
-    params[:q] = nil
+  def set_feed
+    @feed = Feed.find(params[:id])
   end
 end
