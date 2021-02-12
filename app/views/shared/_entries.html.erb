@@ -2,14 +2,17 @@
 <% if entries.present? %>
   <div class="mt-5 mb-5">
     <% if @feed %>
-      result <strong><%= @pagy.count %></strong> entries
+      result <strong><%= @pagy.count %></strong> entries 
+      <% if @timing %>
+        <span class="text-gray-500">(<%=  @timing.real.round(4) %> sec)</span>
+      <% end %>
     <% else %>
       <%= latest ? 'in the last 24 hours' : '' %> result <strong><%= @pagy.count %></strong> entries from <strong><%= (@total_entries || entries).pluck(:feed_id).uniq.size%></strong> feeds <span class="text-gray-500">(<%=  @timing.real.round(4) %> sec)</span>
     <% end %>
     <div class="float-right">
       <div class="rounded w-5 border-blue-400 border hover:underline p-1 text-blue-800">
         <% if @feed %>
-            <%= link_to entries_feed_path(id: @feed.id, format: 'csv'), title: 'export feed entries as csv' do %>
+            <%= link_to entries_feed_path(id: @feed.id, q: params[:q], format: 'csv'), title: 'export feed entries as csv' do %>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
@@ -45,7 +48,11 @@
 <% else %>
   <div class="h-full bg-white p-3 mt-5">
   <% if @feed %>
-    <p>There are no entries for this feed yet. Try again later!</p>
+    <% if params[:q].blank? %>
+      <p>There are no entries for this feed yet. Try again later!</p>
+    <% else %>
+       <p>Your search for - <strong><%= params[:q] %></strong> - did not match any entries into this feed. Try with another query!</p>
+    <% end %>
   <% else %>
     <% if params[:q].blank? %>
       <p> You must specify a search query to get results. <a class="underline text-red-400" href="/entries/search?q=weather">I'm feeling lucky!</a></p>

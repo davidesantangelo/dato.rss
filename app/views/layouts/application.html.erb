@@ -54,12 +54,16 @@
         <% if params[:controller] == 'entries' %>
           <%= link_to 'dato.rss', root_path, class: 'inline-block align-middle py-2 text-xl underline text-green-600', title: 'back to homepage'%>  <span class="inline-block align-middle py-2 text-xl text-blue-600"> / </span>
           <%= link_to 'feed.rss', feeds_path, class: 'inline-block align-middle py-2 text-xl underline text-blue-600', title: 'back to feeds' %> <span class="inline-block align-middle py-2 text-xl text-blue-600"> / </span>
-          <span class="inline-block align-middle py-2 text-xl text-white px-2 bg-gray-600"> <%= params[:q] %> </span>
+          <span class="inline-block align-middle py-2 text-xl text-white px-2 bg-gray-600"> <%= params[:action] == 'index' ? 'latest' : params[:q] %> </span>
           <span class="inline-block align-middle py-2 text-xl text-gray-600"> / entries </span>
         <% end %>
       </div>
 
-      <% unless @feed %>
+      <% if @feed %>
+        <%= form_tag entries_feed_path(@feed), method: :get do %>
+          <%= text_field_tag 'q', params[:q], class: 'border border-gray-400 py-3 px-3 text-grey-darkest w-full rounded', placeholder: 'what are you looking for?', type: 'search' %>
+        <% end %>
+      <% else %>
         <%= form_tag search_entries_path, method: :get do %>
           <%= text_field_tag 'q', params[:q], class: 'border border-gray-400 py-3 px-3 text-grey-darkest w-full rounded', placeholder: 'what are you looking for?', type: 'search' %>
         <% end %>
