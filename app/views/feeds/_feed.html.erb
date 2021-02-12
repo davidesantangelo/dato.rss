@@ -1,6 +1,6 @@
 <div class="mb-5 overflow-ellipsis overflow-hidden">
   <p>
-    <a target="_BLANK" class="no-underline hover:underline text-blue-700" href="<%= feed.url %>"><%= feed.title %></a>
+    <span class=" text-blue-600 border-blue-200 border text-base inline-flex items-center justify-center px-2 py-1 mr-2 leading-none rounded-sd"> <%= feed.language.presence || '-' %></span><a target="_BLANK" class="no-underline hover:underline text-blue-700" href="<%= feed.url %>"><%= feed.title %></a>
   </p>
   <div class="mb-1">
     <span class="font-light overflow-ellipsis overflow-hidden text-green-600"><%= feed.url %></span>
@@ -9,7 +9,7 @@
   <div class="my-1">
     <span title="feed rank" class="bg-yellow-400 text-white inline-flex items-center justify-center px-2 py-1 text-xs leading-none rounded-sd">rank <%= feed.rank.round %></span>
     <span class="bg-gray-100 text-gray-600 inline-flex items-center justify-center px-2 py-1 text-xs leading-none rounded-sd"> entries <%= feed.entries_count %> </span>
-    <span class="bg-gray-100 text-gray-600 inline-flex items-center justify-center px-2 py-1 text-xs leading-none rounded-sd"> language <%= feed.language.presence || 'not available' %></span>
     <span class="bg-gray-100 text-gray-600 inline-flex items-center justify-center px-2 py-1 text-xs leading-none rounded-sd"> created <%= "#{time_ago_in_words(feed.created_at, include_seconds: true)} ago" %></span>
+    <span class="bg-gray-100 text-gray-600 inline-flex items-center justify-center px-2 py-1 text-xs leading-none rounded-sd"> updated <%= "#{time_ago_in_words(feed.last_import_at, include_seconds: true)} ago" %></span>
   </div>
 </div>
