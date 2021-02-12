@@ -10,6 +10,8 @@
     <span title="feed rank" class="bg-yellow-400 text-white inline-flex items-center justify-center px-2 py-1 text-xs leading-none rounded-sd">rank <%= feed.rank.round %></span>
     <%= link_to "entries #{feed.entries_count}", entries_feed_path(feed), title: 'show feed entries', class: 'hover:bg-gray-500 hover:text-white bg-gray-100 text-gray-600 inline-flex items-center justify-center px-2 py-1 text-xs leading-none rounded-sd' %>
     <span class="bg-gray-100 text-gray-600 inline-flex items-center justify-center px-2 py-1 text-xs leading-none rounded-sd"> created <%= "#{time_ago_in_words(feed.created_at, include_seconds: true)} ago" %></span>
-    <span class="bg-gray-100 text-gray-600 inline-flex items-center justify-center px-2 py-1 text-xs leading-none rounded-sd"> updated <%= "#{time_ago_in_words(feed.last_import_at, include_seconds: true)} ago" %></span>
+    <% if feed.last_import_at %>
+      <span class="bg-gray-100 text-gray-600 inline-flex items-center justify-center px-2 py-1 text-xs leading-none rounded-sd"> updated <%= "#{time_ago_in_words(feed.last_import_at, include_seconds: true)} ago" %></span>
+    <% end %>
   </div>
 </div>
