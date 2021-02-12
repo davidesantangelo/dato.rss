@@ -1,7 +1,7 @@
 # DATO.RSS
 *The best RSS Search Engine experience you can find.*
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/y6a1mm3xrdr6wnm1jogk.png)
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/g7qy3u81llp88e3n275f.png)
 
 **Search Engine:** Quickly search through the millions of available RSS feeds.
 
@@ -83,12 +83,18 @@ Feed Ranking is provided by [openrank](https://openrank.io) a free root domain a
 ((Math.log10(domain_rank) / Math.log10(100)) * 100).round
 ```
 
+## Machine Learning
+
+Machine Learning is provided by [dandelion API](https://dandelion.eu) Semantic Text Analytics as a service, from text to actionable data. Extract meaning from unstructured text and put it in context with a simple API.
+
 
 ## Wiki
 
-All documentation is in the Wiki section. Feel free to make it better, of course.
+All API documentation is in the Wiki section. Feel free to make it better, of course.
 
 https://github.com/davidesantangelo/dato.rss/wiki
+
+To use some features such as adding a new feed you need a token with **write** permission. Currently only I can enable it. In case contact me
 
 ## Built With
 
