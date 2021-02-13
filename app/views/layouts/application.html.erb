@@ -59,14 +59,8 @@
         <% end %>
       </div>
 
-      <% if @feed %>
-        <%= form_tag entries_feed_path(@feed), method: :get do %>
-          <%= text_field_tag 'q', params[:q], class: 'border border-gray-400 py-3 px-3 text-grey-darkest w-full rounded', placeholder: 'what are you looking for?', type: 'search' %>
-        <% end %>
-      <% else %>
-        <%= form_tag search_entries_path, method: :get do %>
-          <%= text_field_tag 'q', params[:q], class: 'border border-gray-400 py-3 px-3 text-grey-darkest w-full rounded', placeholder: 'what are you looking for?', type: 'search' %>
-        <% end %>
+      <%= form_tag(@feed ? entries_feed_path(@feed) : search_entries_path, method: :get) do %>
+        <%= text_field_tag 'q', params[:q], class: 'border border-gray-400 py-3 px-3 text-grey-darkest w-full rounded', placeholder: 'what are you looking for?', type: 'search' %>
       <% end %>
       
       <%= yield %>

@@ -7,7 +7,7 @@
         <span class="text-gray-500">(<%=  @timing.real.round(4) %> sec)</span>
       <% end %>
     <% else %>
-      <%= latest ? 'in the last 24 hours' : '' %> result <strong><%= @pagy.count %></strong> entries from <strong><%= (@total_entries || entries).pluck(:feed_id).uniq.size%></strong> feeds <span class="text-gray-500">(<%=  @timing.real.round(4) %> sec)</span>
+      <%= latest ? 'in the last 24 hours' : '' %> result <strong><%= @pagy.count %></strong> entries from <strong><%= entries.pluck(:feed_id).uniq.size %></strong> feeds <span class="text-gray-500">(<%=  @timing.real.round(4) %> sec)</span>
     <% end %>
     <div class="float-right">
       <div class="rounded w-5 border-blue-400 border hover:underline p-1 text-blue-800">
@@ -36,7 +36,7 @@
     </div>
   </div>
   
-  <div class="h-full bg-white p-3"> 
+  <div class="bg-white p-3 overflow-ellipsis overflow-hidden"> 
     <% entries.each do |entry| %>
       <%= render 'shared/entry', entry: entry %>
     <% end %>
@@ -46,7 +46,7 @@
     <% end %>
   </div>
 <% else %>
-  <div class="h-full bg-white p-3 mt-5">
+  <div class="bg-white p-3 mt-5">
   <% if @feed %>
     <% if params[:q].blank? %>
       <p>There are no entries for this feed yet. Try again later!</p>

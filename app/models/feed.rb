@@ -71,7 +71,7 @@ class Feed < ApplicationRecord
 
     feed = find_or_create_by(url: url) do |f|
       f.title = feed.title.to_s.squish
-      f.description = feed.description.to_s.squish
+      f.description = feed.try(:description).to_s.squish
       f.image = feed.try(:image)
       f.language = feed.try(:language)
     end

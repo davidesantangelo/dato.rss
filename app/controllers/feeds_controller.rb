@@ -1,4 +1,5 @@
 class FeedsController < ApplicationController
+  # callbacks
   before_action :set_feed, only: [:entries]
   before_action :set_timing, only: [:entries]
 
@@ -31,14 +32,14 @@ class FeedsController < ApplicationController
   def feed_entries
     @feed_entries ||= begin
       if params[:q].present?
-        Entry.where(feed_id: @feed.id).search(params[:q])
+        @feed.entries.search(params[:q])
       else
-        Entry.where(feed_id: @feed.id)
+        @feed.entries
       end
     end
   end
 
   def set_timing
-    @timing = Benchmark.measure { Entry.where(feed_id: @feed.id).search(params[:q]) }
+    @timing = Benchmark.measure { @feed.entries.search(params[:q]) }
   end
 end
