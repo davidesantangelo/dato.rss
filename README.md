@@ -1,5 +1,5 @@
 # DATO.RSS
-*The best RSS Search Engine experience you can find.*
+*A seamless RSS Search Engine experience with a hint of Machine Learning.*
 
 ![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/g7qy3u81llp88e3n275f.png)
 
