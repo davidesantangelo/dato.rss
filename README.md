@@ -87,6 +87,11 @@ Feed Ranking is provided by [openrank](https://openrank.io) a free root domain a
 
 Machine Learning is provided by [dandelion API](https://dandelion.eu) Semantic Text Analytics as a service, from text to actionable data. Extract meaning from unstructured text and put it in context with a simple API.
 
+# Add Feed
+
+At the moment is not possible to add source Feed if you have feed proposals open an issue with the URLs to add
+
+https://github.com/davidesantangelo/dato.rss/issues
 
 ## Wiki
 
