@@ -1,50 +1,13 @@
-<section class="homescreen m-0 flex flex-col w-screen justify-center h-screen">
-
-  <div class="lg:mx-48 mx-8 pt-40 mb-auto md:mx-48">
-    <h1 class="text-6xl text-teal-400 text-green-400">
-      dato.rss <i class="fas fa-rss-square text-teal-500"></i>
-    </h1>
-    <p class="leading-normal text-gray-900 font-light mt-8 text-2xl md:text-5xl text-left md:text-left">
-      The best <span class="underline">RSS Search</span> experience you can find.
-    </p>
-   
-    <p class="text-lg  text-gray-500 sm:mt-3 sm:text-xl xl:mt-4 xl:text-2xl">
-      A seamless RSS Search Engine experience with a hint of Machine Learning.
-    </p>
-
-    <div class="inline-flex space-x-2 mt-6 sm:flex sm:mt-8 xl:mt-12">
-      <a href="https://github.com/davidesantangelo/dato.rss" title="dato.rss github">
-        <button class="px-5 py-2 border border-gray-400 text-base leading-4 font-semibold rounded text-gray-800 shadow-sm hover:bg-gray-900 hover:text-white focus:outline-none focus:bg-gray-700 transition ease-in-out duration-150 xl:text-lg xl:py-2">
-          <i class="fab fa-github-square"></i> Code
-        </button>
-      </a>
-
-      <a href="https://github.com/davidesantangelo/dato.rss/wiki" title="dato.rss Search Engine">
-        <button class="px-5 py-2 border  border-gray-400 text-base leading-4 font-semibold rounded text-gray-800 shadow-sm hover:bg-gray-900 hover:text-white focus:outline-none focus:bg-gray-700 transition ease-in-out duration-150 xl:text-lg xl:py-2">
-          API <i class="fas fa-code"></i>
-        </button>
-      </a>
-
-      <a href="/feeds" title="dato.rss Search Engine">
-        <button class="w-full sm:w-auto px-5 py-2 border border-transparent text-base leading-4 font-semibold rounded text-white bg-green-400 hover:border-green-400 shadow-sm hover:text-green-800 hover:bg-white focus:outline-none focus:text-gray-600 transition ease-in-out duration-150 xl:text-lg xl:py-2">
-          Try Now <i class="fas fa-rss"></i>
-        </button>
-      </a>
-    </div>
-
-    <div class="py-8 sm:pt-12 md:max-w-3xl md:mx-auto lg:mx-0 lg:max-w-full lg:py-0 lg:pt-24">
-      <p class="text-sm font-semibold text-gray-700 uppercase tracking-wider">Designed and developed by</p>
-      <div class="mt-4 sm:flex">
-        <a href="https://twitter.com/daviducolo" class="flex items-center no-underline">
-          <div class="flex-shrink-0">
-            <img class="h-12 w-12 rounded-full border-2 border-white" src="https://pbs.twimg.com/profile_images/1242116752051494912/MRcOF_Z8_normal.jpg" alt="">
-          </div>
-          <div class="ml-3">
-            <p class="font-semibold text-gray-700 leading-tight">Davide Santangelo</p>
-            <p class="text-sm text-gray-500 leading-tight">Software Developer</p>
-          </div>
-        </a>
-      </div>
-    </div>
+<section class="homescreen m-0 flex flex-col w-screen justify-center mt-64 xl:mt-96 lg:mt-96">
+  <h1 class="text-6xl  text-green-400 inline-flex justify-center">
+      dato.rss <i class="fas text-3xl fa-rss-square text-teal-500"></i>
+  </h1>
+  <div class="inline-flex justify-center mt-3 sm:mt-3 xl:mt-3">
+    <%= form_tag(search_entries_path, method: :get) do %>
+      <%= text_field_tag 'q', params[:q], class: 'appearance-none border border-gray-300 py-3 px-3 text-grey-darkest w-min:60 w-96', placeholder: 'what are you looking for?', type: 'search' %>
+    <% end %>
+  </div>
+  <div class="inline-flex justify-center mt-4 z sm:mt-4 xl:mt-4">
+    <span class="w-auto text-sm  text-gray-500 leading-4 focus:outline-none focus:text-gray-600 transition ease-in-out duration-150">imported <a title="show latest entries" href="/entries" class="underline"><%= number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %> entries</a> from <a title="show feeds" href="/feeds" class="underline"><%= Feed.all.size %> feeds</a></span>
+  </div>
 </section>
-
