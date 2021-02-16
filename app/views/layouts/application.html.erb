@@ -60,7 +60,7 @@
       </div>
 
       <%= form_tag(@feed ? entries_feed_path(@feed) : search_entries_path, method: :get) do %>
-        <%= text_field_tag 'q', params[:q], class: 'appearance-none border border-gray-300 py-3 px-3 text-grey-darkest w-full rounded-sd', placeholder: 'what are you looking for?', type: 'search', autofocus: true %>
+        <%= text_field_tag 'q', params[:q], class: 'appearance-none border border-gray-400 py-3 px-3 text-grey-darkest w-full rounded-sd', placeholder: 'what are you looking for?', type: 'search', autofocus: true %>
       <% end %>
       
       <%= yield %>
