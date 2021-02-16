@@ -10,26 +10,14 @@
       <%= latest ? 'in the last 24 hours' : '' %> result <strong><%= @pagy.count %></strong> entries from <strong><%= entries.pluck(:feed_id).uniq.size %></strong> feeds <span class="text-gray-500">(<%=  @timing.real.round(4) %> sec)</span>
     <% end %>
     <div class="float-right">
-      <div class="rounded w-5 border-blue-400 border hover:underline p-1 text-blue-800">
+      <div class="rounded  bg-gray-400 border hover:underline px-2 text-white">
         <% if @feed %>
-            <%= link_to entries_feed_path(id: @feed.id, q: params[:q], format: 'csv'), title: 'export feed entries as csv' do %>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-            <% end %>
+            <%= link_to 'csv', entries_feed_path(id: @feed.id, q: params[:q], format: 'csv'), title: 'export feed entries as csv' %>
         <% else %>
           <% if latest %>
-            <%= link_to entries_path(format: 'csv'), title: 'export latest entries as csv' do %>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-            <% end %>
+            <%= link_to 'csv', entries_path(format: 'csv'), title: 'export latest entries as csv' %>
           <% else %>
-            <%= link_to search_entries_path(format: 'csv', q: params[:q]), title: 'export entries as csv' do %>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-            <% end %>
+            <%= link_to 'csv', search_entries_path(format: 'csv', q: params[:q]), title: 'export entries as csv' %>
           <% end %>
         <% end %>
       </div>

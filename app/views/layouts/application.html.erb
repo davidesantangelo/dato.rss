@@ -54,7 +54,7 @@
         <% if params[:controller] == 'entries' %>
           <%= link_to 'dato.rss', root_path, class: 'inline-block align-middle py-2 text-xl underline text-green-600', title: 'back to homepage'%>  <span class="inline-block align-middle py-2 text-xl text-blue-600"> / </span>
           <%= link_to 'feed.rss', feeds_path, class: 'inline-block align-middle py-2 text-xl underline text-blue-600', title: 'back to feeds' %> <span class="inline-block align-middle py-2 text-xl text-blue-600"> / </span>
-          <span class="inline-block align-middle py-2 text-xl text-white px-2 bg-gray-600"> <%= params[:action] == 'index' ? 'latest' : params[:q] %> </span>
+          <span class="inline-block align-middle py-2 text-xl text-white px-2 bg-gray-600"> <%= params[:action] == 'index' ? 'latest' : params[:q].presence || 'blank query' %> </span>
           <span class="inline-block align-middle py-2 text-xl text-gray-600"> / entries </span>
         <% end %>
       </div>
