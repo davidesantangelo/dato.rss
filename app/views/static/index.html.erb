@@ -8,7 +8,7 @@
     <% end %>
   </div>
   <div class="inline-flex justify-center mt-4 z sm:mt-4 xl:mt-4">
-    <span class="loading hidden w-auto text-sm  text-gray-500 leading-4 focus:outline-none focus:text-gray-600 transition ease-in-out duration-150">search within <span class="underline text-gray-600"><%= number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %></span> entries </span>
+    <span class="loading hidden w-auto text-sm  text-gray-800 leading-4 focus:outline-none focus:text-gray-600 transition ease-in-out duration-150">search within <span class="underline text-gray-600"><%= number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %></span> entries ... </span>
     <span class="stats w-auto text-sm  text-gray-500 leading-4 focus:outline-none focus:text-gray-600 transition ease-in-out duration-150">imported <a title="show latest entries" href="/entries" class="underline text-gray-600"><%= number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %> entries</a> from <a title="show feeds" href="/feeds" class="underline text-gray-600"><%= Feed.all.size %> feeds</a></span>
   </div>
 </section>
