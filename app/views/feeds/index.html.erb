@@ -2,7 +2,7 @@
 <div class="mt-5 mb-5">
   result <strong><%= number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %></strong> entries from <strong><%= @pagy.count %></strong> feeds
   <div class="float-right">
-    <div class="rounded  bg-gray-400 border hover:underline px-2 text-white md:flex hidden">
+    <div class="rounded  bg-gray-400 border hover:underline hover:bg-gray-600 px-2 text-white md:flex hidden">
       <%= link_to 'csv', feeds_path(format: 'csv'), title: 'export feeds as csv' %>
     </div>
   </div>
