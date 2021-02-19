@@ -26,7 +26,7 @@ class Entry < ApplicationRecord
   }
 
   # scopes
-  default_scope { order(created_at: :desc) }
+  default_scope { order(published_at: :desc) }
 
   scope :enriched, -> { where.not(enriched_at: nil) }
   scope :latest, -> { where('published_at >= ?', 24.hours.ago) }
