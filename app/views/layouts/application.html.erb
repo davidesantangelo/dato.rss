@@ -64,9 +64,9 @@
 
         <% if params[:controller] == 'feeds' %>
           <% case params[:action] %>
-            <% when 'new', 'entries' %>
+            <% when 'new' %>
               <%= link_to 'search', feeds_path, title: 'back to search', class: "rounded float-right inline-block align-middle py-1 text-xl text-gray-600 underline" %>
-            <% when 'index' %>
+            <% when 'index', 'entries' %>
               <%= link_to 'add feed', new_feed_path, title: 'add new feed', class: "rounded float-right inline-block align-middle py-1 text-xl text-gray-600 underline" %>
           <% end %>
         <% end %>
