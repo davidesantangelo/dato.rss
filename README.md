@@ -1,6 +1,15 @@
 # DATO.RSS
 *A seamless RSS Search Engine experience with a hint of Machine Learning.*
 
+# BETA
+
+Dato.RSS is in beta (launched 15 days ago), and will likely see many changes in the near future.
+
+If you have comments or suggestions, please send them to us using the Issues TAB.
+
+Thanks for trying the beta!
+
+
 ![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/x7e9tpkq0hc3ql70zzp5.png)
 
 **Search Engine:** Quickly search through the millions of available RSS feeds.
