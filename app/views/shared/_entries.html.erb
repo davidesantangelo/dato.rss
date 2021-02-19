@@ -10,7 +10,7 @@
       <%= latest ? 'in the last 24 hours' : '' %> result <strong><%= @pagy.count %></strong> entries from <strong><%= entries.pluck(:feed_id).uniq.size %></strong> feeds <span class="text-gray-500">(<%=  @timing.real.round(4) %> sec)</span>
     <% end %>
     <div class="float-right">
-      <div class="rounded  bg-gray-400 border hover:underline hover:bg-gray-600 px-2 text-white md:flex hidden">
+      <div class="rounded  bg-gray-100 border hover:underline border-gray-300 px-2 text-gray-600 md:flex hidden">
         <% if @feed %>
             <%= link_to 'csv', entries_feed_path(id: @feed.id, q: params[:q], format: 'csv'), title: 'export feed entries as csv' %>
         <% else %>

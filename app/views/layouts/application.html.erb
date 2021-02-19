@@ -47,7 +47,11 @@
               <span class="inline-block align-middle py-2 text-xl text-white bg-blue-600 px-2"> <%= @feed.title %> </span>
               <span class="inline-block align-middle py-2 text-xl text-gray-600"> / entries </span>
             <% when 'index' %>
-              <%= link_to 'dato.rss', root_path, class: 'inline-block align-middle py-2 text-xl underline text-green-600', title: 'back to homepage'%>  <span class="inline-block align-middle py-2 text-xl text-blue-600"> / feeds </span>
+              <%= link_to 'dato.rss', root_path, class: 'inline-block align-middle py-2 text-xl text-light underline text-green-600', title: 'back to homepage'%>  <span class="inline-block align-middle py-2 text-xl text-blue-600"> / feeds </span>
+            <% when 'new' %>
+              <%= link_to 'dato.rss', root_path, class: 'inline-block align-middle py-2 text-xl underline text-green-600', title: 'back to homepage'%>  <span class="inline-block align-middle py-2 text-xl text-blue-600"> / </span>
+              <%= link_to 'feeds.rss', feeds_path, class: 'inline-block align-middle py-2 text-xl underline text-blue-600', title: 'back to homepage'%>  <span class="inline-block align-middle py-2 text-xl text-blue-600"> / </span>
+              <span class="inline-block align-middle py-2 text-xl bg-gray-600 text-white px-2"> add </span>
           <% end %>
         <% end %>
 
@@ -57,10 +61,25 @@
           <span class="inline-block align-middle py-2 text-xl text-white px-2 bg-gray-600"> <%= params[:action] == 'index' ? 'latest' : params[:q].presence || 'blank query' %> </span>
           <span class="inline-block align-middle py-2 text-xl text-gray-600"> / entries </span>
         <% end %>
+
+        <% if params[:controller] == 'feeds' %>
+          <% case params[:action] %>
+            <% when 'new' %>
+              <%= link_to 'back to search', feeds_path, title: 'search', class: "rounded float-right inline-block align-middle py-1 text-xl text-gray-600 underline" %>
+            <% when 'index' %>
+              <%= link_to 'add feed', new_feed_path, title: 'add new feed', class: "rounded float-right inline-block align-middle py-1 text-xl text-gray-600 underline" %>
+          <% end %>
+        <% end %>
       </div>
 
-      <%= form_tag(@feed ? entries_feed_path(@feed) : search_entries_path, method: :get) do %>
-        <%= text_field_tag 'q', params[:q], class: 'appearance-none border border-gray-400 py-3 px-3 text-grey-darkest w-full rounded-sd', placeholder: 'what are you looking for?', type: 'search', autofocus: true %>
+      <% if params[:action] == 'new' %>
+        <%= form_for Feed.new do |form| %>
+          <%= form.text_field :url, class: 'appearance-none border border-gray-400 py-3 px-3 text-grey-darkest w-full rounded', placeholder: 'add feed:https://example.com/rss', type: 'search', autofocus: true, onkeydown: 'if (event.keyCode === 13) { $(\'.loading\').removeClass(\'hidden\'); $(\'.stats\').hide() }' %>
+        <% end %>
+      <% else %>
+        <%= form_tag(@feed ? entries_feed_path(@feed) : search_entries_path, method: :get) do %>
+          <%= text_field_tag 'q', params[:q], class: 'appearance-none border border-gray-400 py-3 px-3 text-grey-darkest w-full rounded', placeholder: 'what are you looking for?', type: 'search', autofocus: true %>
+        <% end %>
       <% end %>
       
       <%= yield %>

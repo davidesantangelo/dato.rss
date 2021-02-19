@@ -1,10 +1,10 @@
-<section class="homescreen m-0 flex flex-col w-screen justify-center mt-56">
+<section class="homescreen m-0 flex flex-col w-screen justify-center mt-56 md:mt-64">
   <h1 class="text-6xl  text-green-400 inline-flex justify-center">
       dato.rss <i class="rss fas text-3xl fa-rss-square hover:text-blue-600"></i>
   </h1>
   <div class="inline-flex justify-center mt-3 sm:mt-3 xl:mt-3">
     <%= form_tag(search_entries_path, method: :get, class: 'w-96 xl:w-4/12 lg:w-4/12 sm:w-8/12 md:w-8/12') do %>
-      <%= text_field_tag 'q', params[:q], id: 'main-input-search', class: 'rounded appearance-none border border-gray-300 py-3 px-3 text-grey-darkest w-full', placeholder: 'what are you looking for?', type: 'search', autofocus: true, onkeydown: 'if (event.keyCode === 13) { $(\'.loading\').removeClass(\'hidden\'); }' %>
+      <%= text_field_tag 'q', params[:q], id: 'main-input-search', class: 'rounded hover:border-gray-400 appearance-none border border-gray-300 py-3 px-3 text-grey-darkest w-full', placeholder: 'what are you looking for?', type: 'search', autofocus: true, onkeydown: 'if (event.keyCode === 13) { $(\'.loading\').removeClass(\'hidden\'); }' %>
     <% end %>
   </div>
   <div class="inline-flex justify-center mt-4 z sm:mt-4 xl:mt-4">

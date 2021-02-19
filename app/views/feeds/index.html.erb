@@ -2,19 +2,10 @@
 <div class="mt-5 mb-5">
   result <strong><%= number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %></strong> entries from <strong><%= @pagy.count %></strong> feeds
   <div class="float-right">
-    <div class="rounded  bg-gray-400 border hover:underline hover:bg-gray-600 px-2 text-white md:flex hidden">
+    <div class="rounded  bg-gray-100 border hover:underline border-gray-300 px-2 text-gray-500 md:flex hidden">
       <%= link_to 'csv', feeds_path(format: 'csv'), title: 'export feeds as csv' %>
     </div>
   </div>
 </div>
 
-<div class="bg-white p-3 overflow-ellipsis overflow-hidden">
-  <% @feeds.each do |feed| %>
-    <%= render 'feed', feed: feed %>
-  <% end %>
-
-  <% if @pagy.pages > 1 %>
-    <%== pagy_nav(@pagy).html_safe %>
-  <% end %>
-</div>
-
+<%= render 'shared/feeds', feeds: @feeds %>
