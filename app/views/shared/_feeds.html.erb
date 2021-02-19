@@ -1,0 +1,9 @@
+<div class="bg-white p-3 overflow-ellipsis overflow-hidden">
+  <% feeds.each do |feed| %>
+    <%= render 'feed', feed: feed %>
+  <% end %>
+
+  <% if @pagy.pages > 1 %>
+    <%== pagy_nav(@pagy).html_safe %>
+  <% end %>
+</div>
