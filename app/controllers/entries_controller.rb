@@ -6,7 +6,8 @@ class EntriesController < ApplicationController
   before_action :set_timing
 
   def index
-    @pagy, @entries = pagy Entry.latest
+    @pagy, @entries = pagy Entry.unscoped.latest
+
     respond_to do |format|
       format.html
       format.csv { send_data @entries.limit(EXPORT_ROW_LIMIT).to_csv, filename: "latest-entries-#{Date.today}.csv" }
@@ -33,7 +34,7 @@ class EntriesController < ApplicationController
       if params[:q].present?
         Benchmark.measure { Entry.search(params[:q]) }
       else
-        Benchmark.measure { Entry.latest }
+        Benchmark.measure { Entry.unscoped.latest }
       end
   end
 end
