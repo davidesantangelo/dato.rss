@@ -49,7 +49,7 @@ class Entry < ApplicationRecord
       body: entry.summary,
       url: entry.url,
       external_id: entry.entry_id,
-      categories: entry&.categories.to_a.map(&:downcase),
+      categories: entry&.categories.to_a.compact.map(&:downcase),
       published_at: entry.published || Time.current
     }
 
