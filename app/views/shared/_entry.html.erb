@@ -21,7 +21,7 @@
     <span class="font-light text-green-600"><%= entry.url %></span>
   </div>
   <span
-    class="text-justify"><%= sanitize(highlight(entry.body.truncate(700, omission: '... (continue)'), params[:q]), tags: %w(strong em a mark), attributes: %w(href)) %></span>
+    class="text-justify"><%= sanitize(highlight(entry.body.truncate(800, omission: '... (continue)'), params[:q]), tags: %w(strong em a mark), attributes: %w(href)) %></span>
   <div class="my-1">
     <% entry.categories.take(6).each do |category| %>
       <span class="bg-gray-100 text-gray-600 inline-flex items-center justify-center px-2 py-1 text-xs leading-none rounded-sd"><%= category %></span>
