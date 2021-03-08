@@ -3,7 +3,7 @@
 
 # BETA
 
-Dato.RSS is in beta (launched 15 days ago), and will likely see many changes in the near future.
+Dato.RSS is in beta, and will likely see many changes in the near future.
 
 If you have comments or suggestions, please send them to us using the Issues TAB.
 
