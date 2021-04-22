@@ -52,11 +52,11 @@ class FeedsController < ApplicationController
 
   def feed_entries
     @feed_entries ||= begin
-      if params[:q].present?
-        @feed.entries.search(params[:q])
-      else
-        @feed.entries
-      end
+                        if params[:q].present?
+                          @feed.entries.search(params[:q])
+                        else
+                         @feed.entries
+                        end
     end
   end
 

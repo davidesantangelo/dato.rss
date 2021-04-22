@@ -67,6 +67,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.4'
   gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
   gem 'ed25519', '~> 1.2'
+  gem 'rubocop-performance', require: false
 end
 
 group :test do
