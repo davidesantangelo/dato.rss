@@ -1,4 +1,5 @@
 require_relative 'boot'
+require_relative '../lib/rack_x_robots_tag'
 
 require 'rails/all'
 
@@ -22,6 +23,7 @@ module DatoRss
 
     config.assets.initialize_on_precompile = false
 
+    config.middleware.use Rack::XRobotsTag
     config.middleware.use ActionDispatch::Cookies
 
     Rack::Attack.throttled_response = lambda do |env|
