@@ -4,7 +4,7 @@ module Webhook
   class DeliveryWorker
     include Sidekiq::Worker
     sidekiq_options retry: 3, backtrace: 10
-    
+
     def perform(endpoint_id, payload)
       endpoint = Callback.find(endpoint_id)
 

@@ -10,7 +10,7 @@ class CreateCallbacks < ActiveRecord::Migration[6.1]
     end
 
     add_index :callbacks, :url
-    add_index :callbacks, [:url, :token_id], unique: true
+    add_index :callbacks, %i[url token_id], unique: true
     add_index :callbacks, :events, using: 'gin'
   end
 end

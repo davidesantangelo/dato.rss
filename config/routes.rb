@@ -23,7 +23,7 @@ Rails.application.routes.draw do
         get :feeds
       end
     end
-    
+
     resources :webhooks
 
     resources :tokens, only: [:create] do
