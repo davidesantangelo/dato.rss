@@ -1,6 +1,7 @@
 module Api
   class WebhooksController < BaseController
     # callbacks
+    before_action :set_webhook, only: [:show, :update, :destroy]
     before_action -> { check_token_authorization('write') }, only: [:create]
     before_action :check_create_params, only: [:create]
 
@@ -48,6 +49,10 @@ module Api
       return if webhook_params[:events].present?
 
       json_error_response('Validation Failed', "missing events param (#{Webhook::Event::EVENT_TYPES.join(',')})", :unprocessable_entity)
+    end
+
+    def set_webhook
+      @webhook = token_webhook_callbacks.find(params[:id])
     end
 
     def token_webhook_callbacks
