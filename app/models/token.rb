@@ -5,7 +5,7 @@ class Token < ApplicationRecord
   validates :permissions, presence: true, inclusion: %w[read write webhook]
 
   # relations
-  has_many :webhook_endpoints, class_name: 'Webhook::Endpoint'
+  has_many :callbacks, class_name: '::Webhook::Callback'
 
   # callbacks
   before_create :generate_key

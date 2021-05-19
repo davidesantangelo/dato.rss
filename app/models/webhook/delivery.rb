@@ -17,7 +17,7 @@ module Webhook
 
     def deliver_webhook_event(event_name, payload)
       event = Webhook::Event.new(event_name, payload || {})
-      webhook_scope.webhook_endpoints.for_event(event_name).each do |endpoint|
+      webhook_scope.callbacks.for_event(event_name).each do |endpoint|
         endpoint.deliver(event)
       end
     end
