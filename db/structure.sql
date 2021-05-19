@@ -54,6 +54,20 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: callbacks; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.callbacks (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    url character varying NOT NULL,
+    events character varying[] NOT NULL,
+    token_id uuid NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
 -- Name: entries; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -137,26 +151,19 @@ CREATE TABLE public.tokens (
 
 
 --
--- Name: webhook_endpoints; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.webhook_endpoints (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
-    url character varying NOT NULL,
-    events character varying[] NOT NULL,
-    feed_id uuid NOT NULL,
-    token_id uuid NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: callbacks callbacks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.callbacks
+    ADD CONSTRAINT callbacks_pkey PRIMARY KEY (id);
 
 
 --
@@ -200,11 +207,31 @@ ALTER TABLE ONLY public.tokens
 
 
 --
--- Name: webhook_endpoints webhook_endpoints_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: index_callbacks_on_events; Type: INDEX; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.webhook_endpoints
-    ADD CONSTRAINT webhook_endpoints_pkey PRIMARY KEY (id);
+CREATE INDEX index_callbacks_on_events ON public.callbacks USING gin (events);
+
+
+--
+-- Name: index_callbacks_on_token_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_callbacks_on_token_id ON public.callbacks USING btree (token_id);
+
+
+--
+-- Name: index_callbacks_on_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_callbacks_on_url ON public.callbacks USING btree (url);
+
+
+--
+-- Name: index_callbacks_on_url_and_token_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_callbacks_on_url_and_token_id ON public.callbacks USING btree (url, token_id);
 
 
 --
@@ -306,61 +333,11 @@ CREATE UNIQUE INDEX index_tokens_on_key ON public.tokens USING btree (key);
 
 
 --
--- Name: index_webhook_endpoints_on_events; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_webhook_endpoints_on_events ON public.webhook_endpoints USING gin (events);
-
-
---
--- Name: index_webhook_endpoints_on_feed_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_webhook_endpoints_on_feed_id ON public.webhook_endpoints USING btree (feed_id);
-
-
---
--- Name: index_webhook_endpoints_on_feed_id_and_token_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_webhook_endpoints_on_feed_id_and_token_id ON public.webhook_endpoints USING btree (feed_id, token_id);
-
-
---
--- Name: index_webhook_endpoints_on_feed_id_and_token_id_and_url; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_webhook_endpoints_on_feed_id_and_token_id_and_url ON public.webhook_endpoints USING btree (feed_id, token_id, url);
-
-
---
--- Name: index_webhook_endpoints_on_token_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_webhook_endpoints_on_token_id ON public.webhook_endpoints USING btree (token_id);
-
-
---
--- Name: index_webhook_endpoints_on_url; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_webhook_endpoints_on_url ON public.webhook_endpoints USING btree (url);
-
-
---
 -- Name: entries fk_rails_05dc0aaac4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.entries
     ADD CONSTRAINT fk_rails_05dc0aaac4 FOREIGN KEY (feed_id) REFERENCES public.feeds(id);
-
-
---
--- Name: webhook_endpoints fk_rails_1a213207e9; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.webhook_endpoints
-    ADD CONSTRAINT fk_rails_1a213207e9 FOREIGN KEY (feed_id) REFERENCES public.feeds(id);
 
 
 --
@@ -372,11 +349,11 @@ ALTER TABLE ONLY public.logs
 
 
 --
--- Name: webhook_endpoints fk_rails_b74af3863c; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: callbacks fk_rails_ad03a58b2c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.webhook_endpoints
-    ADD CONSTRAINT fk_rails_b74af3863c FOREIGN KEY (token_id) REFERENCES public.tokens(id);
+ALTER TABLE ONLY public.callbacks
+    ADD CONSTRAINT fk_rails_ad03a58b2c FOREIGN KEY (token_id) REFERENCES public.tokens(id);
 
 
 --
@@ -394,6 +371,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190429122649'),
 ('20210129080659'),
 ('20210129085830'),
-('20210203105050');
+('20210203105050'),
+('20210511100138');
 
 

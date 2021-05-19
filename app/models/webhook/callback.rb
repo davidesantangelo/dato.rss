@@ -1,20 +1,15 @@
 module Webhook
-  class Endpoint < ApplicationRecord
-    def self.table_name_prefix
-      'webhook_'
-    end
-
+  class Callback < ApplicationRecord
     # utilities
     attribute :events, :string, array: true, default: []
 
     # relations
-    belongs_to :feed
     belongs_to :token
 
     # validations
     validates :url, presence: true, format: URI::DEFAULT_PARSER.make_regexp(%w[http https])
     validates :events, presence: true
-    validates :url, uniqueness: { scope: :feed }
+    validates :url, uniqueness: { scope: :token }
 
     def self.for_event(events)
       where('events @> ARRAY[?]::varchar[]', Array(events))
