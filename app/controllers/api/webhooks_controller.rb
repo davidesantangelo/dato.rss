@@ -51,7 +51,7 @@ module Api
     end
 
     def token_webhook_callbacks
-      @current_token.callbacks
+      current_token.callbacks
     end
 
     def webhook_params
