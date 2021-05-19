@@ -3,10 +3,11 @@ require 'net/http'
 module Webhook
   class DeliveryWorker
     include Sidekiq::Worker
-
+    sidekiq_options retry: 3, backtrace: 10
+    
     def perform(endpoint_id, payload)
       endpoint = Callback.find(endpoint_id)
-      
+
       response = request(endpoint.url, payload)
 
       case response.code
@@ -25,7 +26,7 @@ module Webhook
       RestClient::Request.execute(
         method: :post,
         url: uri.to_s,
-        payload: payload.to_json,
+        payload: JSON.parse(payload).to_json,
         headers: { content_type: :json, accept: :json },
         verify_ssl: uri.scheme == 'https',
         timeout: 3
