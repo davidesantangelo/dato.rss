@@ -5,8 +5,8 @@ module Webhook
     include Sidekiq::Worker
 
     def perform(endpoint_id, payload)
-      return unless endpoint == Callback.find(endpoint_id)
-
+      endpoint = Callback.find(endpoint_id)
+      
       response = request(endpoint.url, payload)
 
       case response.code
