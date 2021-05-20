@@ -11,7 +11,7 @@ xml.rss version: '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom' do
     @search_entries.limit(100).each do |entry|
       xml.item do
         xml.title entry.title
-        xml.description sanitize(entry.body)
+        xml.description entry.text
         entry.categories.each do |category|
           xml.category category.strip
         end
