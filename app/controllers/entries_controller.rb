@@ -20,6 +20,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data search_entries.limit(EXPORT_ROW_LIMIT).to_csv, filename: "entries-#{Date.today}.csv" }
+      format.rss { render layout: false }
     end
   end
 

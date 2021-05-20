@@ -1,7 +1,7 @@
 module Api
   class WebhooksController < BaseController
     # callbacks
-    before_action :set_webhook, only: [:show, :update, :destroy]
+    before_action :set_webhook, only: %i[show update destroy]
     before_action -> { check_token_authorization('write') }, only: [:create]
     before_action :check_create_params, only: [:create]
 

@@ -9,19 +9,26 @@
     <% else %>
       <%= latest ? 'in the last 24 hours' : '' %> result <strong><%= @pagy.count %></strong> entries from <strong><%= entries.pluck(:feed_id).uniq.size %></strong> feeds <span class="text-gray-500">(<%=  @timing.real.round(4) %> sec)</span>
     <% end %>
-    <div class="float-right">
-      <div class="rounded  bg-gray-100 border hover:underline border-gray-300 px-2 text-gray-600 md:flex hidden">
-        <% if @feed %>
-            <%= link_to 'csv', entries_feed_path(id: @feed.id, q: params[:q], format: 'csv'), title: 'export feed entries as csv' %>
-        <% else %>
-          <% if latest %>
-            <%= link_to 'csv', entries_path(format: 'csv'), title: 'export latest entries as csv' %>
-          <% else %>
-            <%= link_to 'csv', search_entries_path(format: 'csv', q: params[:q]), title: 'export entries as csv' %>
-          <% end %>
-        <% end %>
+
+    <% if params[:q].present? %>
+      <div class="float-right rounded  bg-gray-100 border hover:underline border-gray-300 px-2 text-gray-600 md:flex hidden ml-1">
+        <%= link_to 'rss', search_entries_path(format: 'rss', q: params[:q]), title: 'RSS feed URL', target: '_blank' %>
       </div>
+    <% end %>
+
+    <div class="float-right rounded  bg-gray-100 border hover:underline border-gray-300 px-2 text-gray-600 md:flex hidden">
+      <% if @feed %>
+          <%= link_to 'csv', entries_feed_path(id: @feed.id, q: params[:q], format: 'csv'), title: 'export feed entries as csv' %>
+      <% else %>
+        <% if latest %>
+          <%= link_to 'csv', entries_path(format: 'csv'), title: 'export latest entries as csv' %>
+        <% else %>
+          <%= link_to 'csv', search_entries_path(format: 'csv', q: params[:q]), title: 'export entries as csv' %>
+        <% end %>
+      <% end %>
     </div>
+
+    
   </div>
   
   <div class="bg-white p-3 overflow-ellipsis overflow-hidden"> 
