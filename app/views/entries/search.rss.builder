@@ -18,7 +18,7 @@ xml.rss version: '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom' do
         xml.pubDate entry.published_at.to_s(:rfc822)
         xml.guid entry.url
         xml.link entry.url
-        xml.tag!('source', { 'url' => entry.feed.url }) do
+        xml.tag!('source', { 'url' => entry.feed.url.tr('feed://','') }) do
           xml.text! entry.feed.title
         end
       end
