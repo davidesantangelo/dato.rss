@@ -67,10 +67,15 @@
   </span>
   
   <body class="font-arial h-full">
+    <div class="px-6 pb-0 overflow-ellipsis overflow-hidden">
+      <div class="my-4">
+        <%= link_to 'new [+]', new_feed_path, title: 'add new feed', class: "rounded float-right inline-block align-middle py-1 text-xl text-green-400 hover:underline" %>
+      </div>
+    </div>
     <%= yield %>
   </body>
 
   <footer class="absolute bottom-5 text-center w-full justify-self-center">
-    <span class="text-gray-400">made by <a title="Davide Santangelo" href="https://twitter.com/daviducolo" title="show code on github" class="no-underline text-green-400  hover:text-blue-600">Davide Santangelo</a> | github <a class="text-green-400 underline hover:text-black" href="https://github.com/davidesantangelo/dato.rss">code</a></span>
+    <span class="text-gray-400">{ author: <a title="Davide Santangelo" href="https://twitter.com/daviducolo" title="made by Davide Santangelo" class="no-underline text-green-400  hover:text-blue-600">"@daviducolo"</a>, source: <a class="text-green-400 no-underline hover:text-black" href="https://github.com/davidesantangelo/dato.rss">"github"</a> }</span>
   </footer>
 </html>
