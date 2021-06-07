@@ -18,5 +18,5 @@ test:
 
 production:
   <<: *default
-  pool: 25
+  pool: 15
   database: datorss_production
