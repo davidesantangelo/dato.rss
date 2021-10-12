@@ -171,7 +171,7 @@ GEM
       activerecord (>= 5.2)
       activesupport (>= 5.2)
     public_suffix (4.0.6)
-    puma (5.4.0)
+    puma (5.5.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -361,7 +361,7 @@ DEPENDENCIES
   pg
   pg_search
   public_suffix
-  puma (~> 5.0)
+  puma (~> 5.5)
   rack-attack
   rack-cors
   rack-mini-profiler (~> 2.0)
