@@ -1,6 +1,6 @@
 class CreateCallbacks < ActiveRecord::Migration[6.1]
   def change
-    drop_table :webhook_endpoints
+    drop_table :webhook_endpoints if ActiveRecord::Base.connection.table_exists? 'webhook_endpoints'
 
     create_table :callbacks, id: :uuid do |t|
       t.string :url, null: false

@@ -9,7 +9,7 @@ module Api
     include Serializer
     include Pagy::Backend
 
-    Pagy::VARS[:headers] = { page: 'Current-Page', items: 'Per-Page', pages: false, count: 'Total' }
+    Pagy::DEFAULT[:headers] = { page: 'Current-Page', items: 'Per-Page', pages: false, count: 'Total' }
 
     before_action :require_authentication
     skip_before_action :verify_authenticity_token
