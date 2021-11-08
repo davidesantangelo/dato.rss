@@ -19,6 +19,9 @@ module Service
     rescue RestClient::ExceptionWithResponse => e
       Rails.logger.error e.response
       {}
+    rescue Errno::ECONNREFUSED => e
+      Rails.logger.error e
+      {}
     end
   end
 end
