@@ -9,7 +9,7 @@ module Service
         include: 'types,categories',
         top_entities: 5
       }
-
+      
       response = api(action: 'nex', payload: payload)
       response.fetch('annotations', nil)
     rescue RestClient::ExceptionWithResponse => e

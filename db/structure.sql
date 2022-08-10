@@ -270,6 +270,13 @@ CREATE UNIQUE INDEX index_entries_on_feed_id_and_url ON public.entries USING btr
 
 
 --
+-- Name: index_entries_on_published_at; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_entries_on_published_at ON public.entries USING btree (published_at);
+
+
+--
 -- Name: index_entries_on_searchable; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -371,6 +378,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210129080659'),
 ('20210129085830'),
 ('20210203105050'),
-('20210511100138');
+('20210511100138'),
+('20220810142759');
 
 
