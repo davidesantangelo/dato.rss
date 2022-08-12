@@ -1,13 +1,15 @@
+<%= link_to 'add new feed [+]', new_feed_path, title: 'add new feed', class: "rounded absolute right-6 top-4 inline-block align-middle py-1 text-xl text-gray-600 hover:underline" %>
+
 <section class="homescreen m-0 flex flex-col w-screen justify-center mt-52 md:mt-60">
   <h1 class="text-6xl  text-green-400 inline-flex justify-center">
       dato.rss <i class="rss fas text-3xl fa-rss-square hover:text-blue-600"></i>
   </h1>
   <div class="inline-flex justify-center mt-3 sm:mt-3 xl:mt-3">
     <%= form_tag(search_entries_path, method: :get, class: 'w-96 xl:w-4/12 lg:w-4/12 sm:w-8/12 md:w-8/12') do %>
-      <%= text_field_tag 'q', params[:q], id: 'main-input-search', class: 'rounded hover:border-gray-500 appearance-none border border-gray-400 py-3 px-3 text-grey-darkest w-full', placeholder: 'what are you looking for?', type: 'search', autofocus: true, onkeydown: 'if (event.keyCode === 13) { $(\'.loading\').removeClass(\'hidden\'); }' %>
+      <%= text_field_tag 'q', params[:q], id: 'main-input-search', class: 'rounded-md hover:border-gray-500 appearance-none border border-gray-400 py-3 px-3 text-grey-darkest w-full', placeholder: 'what are you looking for?', type: 'search', autofocus: true, onkeydown: 'if (event.keyCode === 13) { $(\'.loading\').removeClass(\'hidden\'); }' %>
     <% end %>
   </div>
   <div class="inline-flex justify-center mt-4 z sm:mt-4 xl:mt-4">
-    <span class="w-auto text-sm  text-gray-500 leading-4 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150">imported <a title="show latest entries" href="/entries" class="underline text-gray-600"><%= number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %> entries</a> from <a title="show feeds" href="/feeds" class="underline text-gray-600"><%= Feed.all.size %> feeds</a></span>
+    <span class="w-auto  text-gray-500 leading-4 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150">imported <a title="show latest entries" href="/entries" class="underline text-gray-600"><%= number_to_human(Feed.sum(:entries_count), format: '%n%u', units: { thousand: 'K', million: 'M' }) %> entries</a> from <a title="show feeds" href="/feeds" class="underline text-gray-600"><%= Feed.all.size %> feeds</a></span>
   </div>
 </section>

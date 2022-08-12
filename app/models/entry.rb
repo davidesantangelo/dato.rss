@@ -30,6 +30,7 @@ class Entry < ApplicationRecord
 
   scope :enriched, -> { where.not(enriched_at: nil) }
   scope :latest, -> { where('published_at >= ?', 24.hours.ago) }
+  scope :random, -> { order('RANDOM()') }
 
   # relations
   belongs_to :feed, counter_cache: true

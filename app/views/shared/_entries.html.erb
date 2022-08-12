@@ -50,7 +50,7 @@
     <% end %>
   <% else %>
     <% if params[:q].blank? %>
-      <p> You must specify a search query to get results. <a class="underline text-red-400" href="/entries/search?q=weather">I'm feeling lucky!</a></p>
+      <p> You must specify a search query to get results. <a class="underline text-red-400" href="/entries/search?q=trend">I'm feeling lucky!</a></p>
     <% else%>
       <p>Your search for - <strong><%= params[:q] %></strong> - did not match any entries. Try with another query!</p>
     <% end %>
