@@ -27,13 +27,13 @@ class EntriesController < ApplicationController
   private
 
   def search_entries
-    @search_entries ||= Entry.search(params[:q])
+    @search_entries ||= Entry.search(params[:q]).limit(Entry::MAX_ROWS_LIMIT)
   end
 
   def set_timing
     @timing =
       if params[:q].present?
-        Benchmark.measure { Entry.search(params[:q]) }
+        Benchmark.measure { search_entries }
       else
         Benchmark.measure { Entry.unscoped.latest }
       end
