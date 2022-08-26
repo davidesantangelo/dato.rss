@@ -27,7 +27,7 @@ class EntriesController < ApplicationController
   private
 
   def search_entries
-    @search_entries ||= Entry.search(params[:q]).limit(Entry::MAX_ROWS_LIMIT)
+    @search_entries ||= Entry.search(params[:q])
   end
 
   def set_timing

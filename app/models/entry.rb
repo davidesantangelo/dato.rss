@@ -32,7 +32,7 @@ class Entry < ApplicationRecord
   default_scope { order(published_at: :desc) }
 
   scope :enriched, -> { where.not(enriched_at: nil) }
-  scope :latest, -> { where('published_at >= ?', 24.hours.ago).limit(MAX_ROWS_LIMIT) }
+  scope :latest, -> { where('published_at >= ?', 24.hours.ago) }
   scope :random, -> { order('RANDOM()') }
 
   # relations

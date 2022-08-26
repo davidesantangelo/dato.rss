@@ -5,7 +5,7 @@ module Api
 
     # /api/search/entries>
     def entries
-      @pagy, @entries = pagy Entry.search(params[:q]).limit(Entry::MAX_ROWS_LIMIT)
+      @pagy, @entries = pagy Entry.search(params[:q])
 
       json_response_with_serializer(@entries, Serializer::ENTRY)
     rescue StandardError => e
