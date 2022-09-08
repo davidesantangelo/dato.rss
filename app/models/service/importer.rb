@@ -1,6 +1,6 @@
 module Service
   class Importer
-    def self.run(limit: 100)
+    def self.run(limit: 250)
       Feed.unscoped.all.order('last_import_at ASC NULLS FIRST').limit(limit).find_each(&:async_update)
     end
 
