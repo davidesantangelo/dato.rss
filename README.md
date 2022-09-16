@@ -1,10 +1,6 @@
 # DATO.RSS
 *A seamless RSS Search Engine experience with a hint of Machine Learning.*
 
-# SUPPORT
-
-[github sponsor](https://github.com/sponsors/davidesantangelo/dashboard)
-
 # BETA
 
 Dato.RSS is in beta, and will likely see many changes in the near future.
