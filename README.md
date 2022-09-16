@@ -102,9 +102,9 @@ Machine Learning is provided by [dandelion API](https://dandelion.eu) Semantic T
 
 # Add Feed
 
-At the moment is not possible to add source Feed if you have feed proposals open an issue with the URLs to add
+You can add as many feeds as you want for the automatic crawler to handle.
 
-https://github.com/dato-ai/dato.rss/issues
+https://datorss.com/feeds/new
 
 ## Wiki
 
