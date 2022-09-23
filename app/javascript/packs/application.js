@@ -13,3 +13,4 @@ ActiveStorage.start()
 
 const images = require.context('../images', true)
 require("stylesheets/application.scss")
+import "stylesheets/application"
