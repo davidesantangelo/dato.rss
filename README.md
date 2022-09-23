@@ -106,7 +106,7 @@ https://datorss.com/feeds/new
 
 All API documentation is in the Wiki section. Feel free to make it better, of course.
 
-https://github.com/dato-ai/dato.rss/wiki
+https://github.com/davidesantangelo/dato.rss/wiki
 
 To use some features such as adding a new feed you need a token with **write** permission. Currently only I can enable it. In case contact me
 
@@ -122,7 +122,7 @@ To use some features such as adding a new feed you need a token with **write** p
 - [PgSearch](https://github.com/Casecommons/pg_search) &mdash; PgSearch builds named scopes that take advantage of PostgreSQL's full text search.
 - [TailwindCSS](https://github.com/tailwindlabs/tailwindcss) &mdash; A utility-first CSS framework for rapidly building custom user interfaces.
 
-Plus *lots* of Ruby Gems, a complete list of which is at [/main/Gemfile](https://github.com/dato-ai/dato.rss/blob/main/Gemfile).
+Plus *lots* of Ruby Gems, a complete list of which is at [/main/Gemfile](https://github.com/davidesantangelo/dato.rss/blob/main/Gemfile).
 
 ## Sponsor me
 
