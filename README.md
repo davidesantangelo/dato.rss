@@ -1,6 +1,10 @@
 # DATO.RSS
 *A seamless RSS Search Engine experience with a hint of Machine Learning.*
 
+# GUMROAD
+
+SQL dump (+3.26M entries) https://davidesantangelo.gumroad.com/l/nkyymb
+
 # BETA
 
 Dato.RSS is in beta, and will likely see many changes in the near future.
