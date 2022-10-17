@@ -3,7 +3,7 @@
 
 # GUMROAD
 
-SQL dump (+3.26M entries) https://davidesantangelo.gumroad.com/l/nkyymb
+An SQL dump of the database with over 3 million entries extracted in over a year can be downloaded   at https://davidesantangelo.gumroad.com/l/nkyymb
 
 # BETA
 
@@ -20,15 +20,12 @@ Thanks for trying the beta!
 
 **RESTful API:** Turns feed data into an awesome API. The API simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep track of your favourite feed data with a simple, fast and clean REST API. All entries are enriched by Machine Learning and Semantic engines.
 
-## Live
-
-https://datorss.com
 
 ## Example
 
 ``` bash
 
-curl 'https://datorss.com/api/searches?q=news' | json_pp
+curl 'https://<yourhost>/api/searches?q=news' | json_pp
 
 {
   "data": [
@@ -104,7 +101,7 @@ Machine Learning is provided by [dandelion API](https://dandelion.eu) Semantic T
 
 You can add as many feeds as you want for the automatic crawler to handle.
 
-https://datorss.com/feeds/new
+https://<yourhost>/feeds/new
 
 ## Wiki
 
