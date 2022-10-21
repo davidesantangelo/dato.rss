@@ -1,9 +1,9 @@
 # DATO.RSS
 *A seamless RSS Search Engine experience with a hint of Machine Learning.*
 
-# GUMROAD
+# SEED
 
-An SQL dump of the database with over 3 million entries extracted in over a year can be downloaded   at https://davidesantangelo.gumroad.com/l/nkyymb
+An SQL dump of the database with over 3 million entries extracted in over a year can be downloaded at https://davidesantangelo.gumroad.com/l/nkyymb
 
 # BETA
 
